@@ -1,0 +1,129 @@
+@startuml
+
+left to right direction
+
+class GraphVizualizer {
+  Panel panel
+  Console console
+  Graph graph
+  void main()
+  GraphVizualizer()
+}
+
+class WeightedGraph {
+  HashMap<T, Node> graph
+}
+
+class NodeData {
+  Node pointer
+  NodeData()
+  NodeData(int w, Node p)
+}
+
+class Node {
+  T element
+  ArrayList<NodeData> data
+  Node()
+  T getElement()
+  String toString()
+}
+
+class ControlPanel {
+  CalcBestDistanceButton bestDistanceButton
+  CalcBestTimeButton bestTimeButton
+  FindLocationDistanceButton locationDistanceButton
+  FindLocationTimeButton locationDistanceButton
+  DistanceTextField distanceField
+  TimeTextField timeField
+  PlanDistanceDropdown planDistanceDropdown
+  PlanTimeDropdown planTimeDropdown
+  WhereToCity1Dropdown whereCity1Dropdown
+  WhereToCity2Dropdown whereCity2Dropdown
+  ControlPanel()
+}
+
+class CalcBestDistanceButton {
+  CalcBestDistanceButton() 
+}
+
+class CalcBestTimeButton {
+  CalcBestTimeButton()
+}
+
+class WhereToCity1Dropdown {
+  citySelect()
+}
+
+class WhereToCity2Dropdown {
+  citySelect()
+}
+
+class FindLocationDistanceButton {
+  FindLocationButton()
+}
+
+class FindLocationTimeButton {
+  FindLocationButton()
+}
+
+class PlanDistanceDropdown {
+  citySelect()
+}
+
+class PlanTimeDropdown {
+  citySelect()
+}
+
+class DistanceTextField {
+  InputField()
+}
+
+class TimeTextField {
+  InputField()
+}
+
+class Console {
+  Console()
+}
+
+class Panel {
+  void paintComponent(Graphics g)
+}
+
+WeightedGraph +-- NodeData
+WeightedGraph +-- Node
+
+Node --* "many" NodeData
+  
+GraphVizualizer +-- ControlPanel
+GraphVizualizer +-- Console
+GraphVizualizer +-- Panel
+
+GraphVizualizer --* "1" ControlPanel
+GraphVizualizer --* "1" Console
+GraphVizualizer --* "1" Panel
+GraphVizualizer --* "1" WeightedGraph
+
+ControlPanel +-- CalcBestDistanceButton
+ControlPanel +-- CalcBestTimeButton
+ControlPanel +-- FindLocationDistanceButton
+ControlPanel +-- FindLocationTimeButton
+ControlPanel +-- DistanceTextField
+ControlPanel +-- TimeTextField
+ControlPanel +-- PlanDistanceDropdown
+ControlPanel +-- PlanTimeDropdown
+ControlPanel +-- WhereToCity1Dropdown
+ControlPanel +-- WhereToCity2Dropdown
+
+ControlPanel --* "1" CalcBestDistanceButton
+ControlPanel --* "1" CalcBestTimeButton
+ControlPanel --* "1" FindLocationDistanceButton
+ControlPanel --* "1" FindLocationTimeButton
+ControlPanel --* "1" DistanceTextField
+ControlPanel --* "1" TimeTextField
+ControlPanel --* "1" PlanDistanceDropdown
+ControlPanel --* "1" PlanTimeDropdown
+ControlPanel --* "1" WhereToCity1Dropdown
+ControlPanel --* "1" WhereToCity2Dropdown
+
+@enduml
